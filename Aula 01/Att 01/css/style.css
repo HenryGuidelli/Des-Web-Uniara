@@ -35,7 +35,7 @@ body {
 
     display: flex;
     gap: 20px;
-    align-items: center;
+    align-items: flex-start; /* garante topo alinhado */
     flex-wrap: wrap; /* Para quebrar em telas pequenas */
 }
 
@@ -43,26 +43,49 @@ body {
     max-width: 250px;
     width: 100%;
     height: auto;
+    max-height: 350px; /* garante altura máxima */
+    object-fit: contain; /* evita distorção */
     border-radius: 15px;
 }
 
 .conteudo {
-    flex: 1; /* O texto ocupa o espaço restante */
+    flex: 1;
     min-width: 250px;
+    max-height: 550px; /* limita à altura da imagem */
+    overflow-y: auto; /* adiciona scroll se o texto passar */
+    text-align: justify;
 }
 
 .titulo {
     margin-bottom: 10px;
 }
 
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ffbf00;
+    color: rgb(45, 45, 45);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ffdd1b;
+
+}
+
 @media (max-width: 768px) {
     .container {
-        flex-direction: column; /* Muda para coluna no celular */
+        flex-direction: column;
         text-align: center;
+        align-items: center;
     }
 
     .conteudo {
-        j
-        text-align: center;
+        max-height: none; /* remove limite para celular */
+        overflow-y: visible;
+        text-align: justify;
     }
 }
